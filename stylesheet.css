@@ -39,3 +39,17 @@
 .loginform button[type="submit"]:hover {
     background-color: #45a049;
 }
+html, body {
+    height: 120%;
+}
+
+.center-button {
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    height: 100%;
+    padding: 15px 32px;
+}
+button.btn.btn-primary {
+    padding: 50px;
+}

@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container-fluid">
-        <ul class="navbar-nav"  style="position: relative; margin-left: 96%" >
+        <ul class="navbar-nav"  style="position: relative; margin-left: 95%" >
 
             <li class="nav-item" >
-                <a  class="nav-link active" href="php/login.php" >Log In</a>
+                <a  class="nav-link active"  href=index.php?page=login >Log In</a>
             </li>
         </ul>
     </div>

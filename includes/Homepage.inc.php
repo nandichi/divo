@@ -5,12 +5,9 @@
     <title>DiVo</title>
 </head>
 <body>
-<h1>
-    U BENT SUCCESVOL INGELOGD
 
 
-    WELKOM OP DE STEMPAGINA
-</h1>
 
-</body>
-</html>
+<div class="center-button">
+    <button class="btn btn-primary">Klik om te stemmen!</button>
+</div>
