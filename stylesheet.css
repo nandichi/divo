@@ -1,3 +1,10 @@
+#container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .loginform {
     width: 300px;
     margin: 0 auto;
@@ -5,6 +12,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f5f5f5;
+    text-align: center;
 }
 
 .loginform h1 {
@@ -42,6 +50,50 @@
 .loginform button[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
 
 body {
     font-family: Arial, sans-serif;

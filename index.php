@@ -24,8 +24,9 @@ if (isset($_GET['page'])) {
 </head>
 <body>
 <?php include 'includes/navbar.inc.php'; ?>
-<?php include 'includes/'.$page.'.inc.php'; ?>
-
+<div id="container">
+    <?php include 'includes/'.$page.'.inc.php'; ?>
+</div>
 
 </body>
 </html>
