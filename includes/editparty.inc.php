@@ -70,9 +70,11 @@ while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
         while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
             ?>
             <div>
-                <input type="checkbox" name="memberid[]" value="<?= $row2["memberid"] ?>" <?php if (in_array($row2["memberid"], $memberids)) { ?> checked="checked" <?php } ?>
-               >
-                <?= $row2["firstname"] ?> <?= $row2["lastname"] ?>
+            <?php if (in_array($row2["memberid"], $memberids)) { ?>
+                <input type="hidden" name="memberid[]" value="<?= $row2["memberid"] ?>">
+            <?php } ?>
+            <input type="checkbox" name="memberid[]" value="<?= $row2["memberid"] ?>" <?php if (in_array($row2["memberid"], $memberids)) { ?> checked="checked" <?php } ?> <?php if ($row["leader"] === $row2["memberid"]) { ?> disabled <?php } ?>>
+            <?= $row2["firstname"] ?> <?= $row2["lastname"] ?>
             </div>
         <?php } ?>
 

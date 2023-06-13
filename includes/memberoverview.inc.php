@@ -2,13 +2,15 @@
 include "../private/connect.php";
 
 
-$partyid = $_GET["partyid"];
-$sql = "SELECT *
-        FROM member where partyid = $partyid
-       ";
+
+
+$sql = "SELECT p.name, p.partyid, m.memberid, m.firstname, m.lastname 
+        FROM party p
+        LEFT JOIN member m on p.partyid = m.partyid
+        ORDER BY partyid
+        ";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
-
 ?>
 <table class="table">
     <thead>
@@ -16,42 +18,28 @@ $stmt->execute();
 
         <th scope="col">Voornaam</th>
         <th scope="col">Achternaam</th>
-
-
+        <th scope="col">Partij </th>
 
 
     </tr>
 
     </thead>
 
-    <button style="float:right" class="btn btn-success" onclick="window.location.href='index.php?page=addmember'">
-        Kamerlid Toevoegen
-    </button>
     <?php
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+        <tbody>
 
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-            <tbody>
+        <tr>
 
-            <tr>
-
-                <td><?= $row["firstname"] ?></td>
-                <td><?= $row["lastname"] ?></td>
-
-                <td>
-                    <button class="btn btn-primary"
-                            onclick="window.location.href='index.php?page=editmember&memberid=<?= $row["memberid"] ?>&partyid=<?=$partyid?>'">Aanpassen
-                    </button>
-                </td>
-                <td>
-                    <button class="btn btn-danger"
-                            onclick=" if(confirm('Weet je zeker dat je deze kamer lid wilt verwijderen?'))window.location.href='php/deletemember.php?memberid=<?= $row["memberid"] ?>&partyid=<?=$partyid?>'">
-                        Verwijder
-                    </button>
-                </td>
+            <td><?= $row["firstname"] ?></td>
+            <td><?= $row["lastname"] ?></td>
+            <td><?= $row["name"] ?></td>
 
 
-            </tr>
-            </tbody>
-        <?php }
-     ?>
+        </tr>
+        </tbody>
+    <?php }
+    ?>
 </table>
+
+
