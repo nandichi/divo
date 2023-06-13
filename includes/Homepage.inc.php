@@ -6,9 +6,9 @@
 <body>
 <div class="container">
     <h1>welkom op de DiVo website</h1>
-    <form action="http://localhost:8000/index.php?page=login" method="get">
-        <button class="btn">klik hier om te stemmen!</button>
-    </form>
+    <a class="btn" href="http://localhost:8000/index.php?page=login">
+        Klik hier om te stemmen!
+    </a>
 </div>
 </body>
 </html>
