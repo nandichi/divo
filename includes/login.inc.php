@@ -7,11 +7,8 @@
     }
     ?>
 
-    <form action="../php/login.php" method="post">
-        <p>gebruikersnaam</p>
-        <input type="text" name="email" placeholder="gebruikersnaam" required>
-        <p>wachtwoord</p>
-        <input type="password" name="password" placeholder="password" required>
+    <form action="php/login.php" method="post">
+        <input type="text" name="email" placeholder="email" required>
         <button class="btn btn-primary" type="submit">login</button>
     </form>
 </div>

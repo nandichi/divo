@@ -1,39 +1,50 @@
 <?php
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+require '../vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
+global $conn;
 session_start();
 
 include '../private/connection.php';
 
 $email = $_POST['email'];
-$password = $_POST['password'];
 
-
-$sql = 'SELECT password FROM users WHERE email= :email';
+$sql = 'SELECT role FROM users WHERE email = :email';
 $query = $conn->prepare($sql);
 $query->bindParam(':email', $email);
 $query->execute();
 
-
 $result = $query->fetch(PDO::FETCH_ASSOC);
-$hashed_password = $result['password'];
-$role = $result['role'];
+
+    $verificationCode = mt_rand(100000, 999999);
+    $_SESSION['verification_code'] = $verificationCode;
+    $_SESSION['email'] = $email;
 
 
-if (password_verify($password, $hashed_password)) {
-    if ($role == "admin") {
-        $_SESSION['ingelogd'] = true;
-        $_SESSION['email'] = $email;
-        header('location: ../index.php?page=admin');
-    } elseif ($role == "klant") {
-        $_SESSION['ingelogd1'] = true;
-        $_SESSION['email'] = $email;
-        header('location: ../index.php?page=homepage');
-    } else {
-        $_SESSION['ingelogd1'] = true;
-        $_SESSION['email'] = $email;
-        header('location: ../index.php?page=homepage');
+    $mail = new PHPMailer(true);
+
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.office365.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'rdivo2023@outlook.com';
+        $mail->Password = 'Naoufal2004';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+        $mail->setFrom('rdivo2023@outlook.com', 'DiVo');
+        $mail->addAddress($email);
+
+        $mail->isHTML(true);
+        $mail->Subject = 'Email Verification';
+        $mail->Body = 'Your verification code is: ' . $verificationCode;
+
+        $mail->send();
+
+        header('location: ../index.php?page=verification');
+    } catch (Exception $e) {
+        $_SESSION['melding'] = 'Failed to send the verification code. Error: ' . $mail->ErrorInfo;
+        header('location: ../index.php?page=login');
     }
-} else {
-    $_SESSION['melding'] = 'Combinatie email en wachtwoord onjuist.';
-    header('location: ../index.php?page=login');
-}
 ?>
