@@ -1,5 +1,5 @@
 <?php
-include '../../private/connect.php';
+include '../private/connection.php';
 $name = $_POST['name'];
 $seats = $_POST['seats'];
 $description = $_POST['description'];

@@ -19,8 +19,6 @@ if (isset($_GET['page'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="stylesheet.css" rel="stylesheet">
 
-
-
 </head>
 <body>
 <?php include 'includes/navbar.inc.php'; ?>

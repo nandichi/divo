@@ -1,5 +1,5 @@
 <?php
-include '../../private/connect.php';
+include '../private/connection.php';
 
 $partyid = $_GET['partyid'];
 

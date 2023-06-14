@@ -1,5 +1,5 @@
 <?php
-include "../private/connect.php";
+include "../private/connection.php";
 
 $sql = "SELECT *
         FROM member where partyid is NULL
