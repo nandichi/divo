@@ -13,6 +13,10 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 ?>
 <table class="table">
+
+    <button style="float:right" class="btn btn-success" onclick="window.location.href='index.php?page=addmember'">
+        Voeg kamerlid toe
+    </button>
     <thead>
     <tr>
 

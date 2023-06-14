@@ -3,7 +3,7 @@
 global $conn;
 session_start();
 
-include '../private/connection.php';
+include '../../private/connect.php';
 
 $sql = 'SELECT email FROM admin';
 $query = $conn->prepare($sql);

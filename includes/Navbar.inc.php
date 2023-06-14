@@ -13,7 +13,23 @@ function generateNavbarLinks() {
                 <a class="nav-link" href="index.php?page=logout">Uitloggen</a>
             </li>
         ';
-    } else {
+    }
+    elseif ($_SESSION["role"] == "admin"){?>
+
+        <li class="nav-item">
+            <a class="nav-link" href="index.php?page=homepage">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.php?page=partyoverview">Partij Overzicht</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.php?page=memberoverview">Kamerleden Overzicht</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.php?page=logout">Uitloggen</a>
+        </li>
+   <?php }
+    else {
         $links .= '
             <li class="nav-item">
                 <a class="nav-link" href="index.php?page=homepage">Home</a>
