@@ -10,4 +10,7 @@
         <input type="text" name="email" placeholder="email" required>
         <button class="btn btn-primary" type="submit">login</button>
     </form>
+    <a  href="http://localhost:8000/index.php?page=adminlogin">
+        Admin Login
+    <a>
 </div>

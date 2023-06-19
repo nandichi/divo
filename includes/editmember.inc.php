@@ -1,10 +1,7 @@
 <?php
-include "../private/connection.php";
-
+include "private/connection.php";
 $memberid = $_GET["memberid"];
 $partyid = $_GET["partyid"];
-
-
 $sql = "SELECT *
         FROM member where memberid = $memberid
        ";
@@ -12,11 +9,10 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
-
 <body>
 <div class="container mt-3">
     <h2>Kamerlid Aanpassen</h2>
-    <form action="php/editmember.php" method="POST" enctype="multipart/form-data">
+    <form action="../php/editmember.php" method="POST" enctype="multipart/form-data">
         <div class="mb-3 mt-3">
             <label>Voornaam:</label>
             <input type="text" class="form-control" placeholder="Voornaam" name="firstname" value="<?=$row["firstname"]?>">

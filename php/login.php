@@ -8,12 +8,11 @@ use PHPMailer\PHPMailer\PHPMailer;
 global $conn;
 session_start();
 
-include '../../private/connection.php';
+include '../private/connection.php';
 
 $email = $_POST['email'];
 if ($_POST["page"] == "adminlogin") {
     $password = $_POST["password"];
-
 
     $sql = "SELECT * FROM admin WHERE email = :email AND password = :password";
     $query = $conn->prepare($sql);

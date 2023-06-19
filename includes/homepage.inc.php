@@ -6,13 +6,14 @@
 <body>
 <div class="container">
     <h1>welkom op de DiVo website</h1>
+    <h5>de website om te stemmen</h5>
     <?php
     if (isset($_SESSION['admin'])) {
         echo 'is admin';
     }
     ?>
     <a class="btn" href="http://localhost:8000/index.php?page=login">
-        Klik hier om te stemmen!
+        Log In
     </a>
 </div>
 </body>

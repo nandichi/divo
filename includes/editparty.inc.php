@@ -1,8 +1,7 @@
 <?php
-include "../private/connection.php";
+include "private/connection.php";
 
 $partyid = $_GET["partyid"];
-
 $sql = "SELECT p.name, p.seats, p.description, p.leader, m.memberid, m.firstname, m.lastname
         FROM party p
         LEFT JOIN member m ON m.partyid = p.partyid and p.leader = m.memberid
@@ -26,7 +25,6 @@ while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
     array_push($memberids, $row1['memberid']);
 }
 ?>
-
 <body>
 <div class="container mt-3">
     <h2>Partij Aanpassen</h2>
@@ -49,8 +47,6 @@ while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
             <textarea class="form-control" name="description"
                       aria-label="With textarea"><?= $row['description'] ?></textarea>
         </div>
-
-
         <label>Partij Voorzitter:</label>
         <select class="form-control"  class="form-select" name="leadermemberid">
             <option value="<?= $row["memberid"] ?>"><?= $row["firstname"] ?> <?= $row["lastname"] ?></option>
@@ -77,8 +73,6 @@ while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
             <?= $row2["firstname"] ?> <?= $row2["lastname"] ?>
             </div>
         <?php } ?>
-
-
         <?php
         $sql = "SELECT firstname, lastname, memberid
                     FROM member
@@ -93,7 +87,6 @@ while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
                 <?= $row2["firstname"] ?> <?= $row2["lastname"] ?>
             </div>
         <?php } ?>
-
         <input type="hidden" value="<?= $partyid ?>" name="partyid">
         <button name="submit" type="submit" class="btn btn-success">Aanpassen</button>
     </form>

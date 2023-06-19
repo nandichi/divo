@@ -1,8 +1,5 @@
 <?php
-include "../private/connection.php";
-
-
-
+include "private/connection.php";
 
 $sql = "SELECT p.logo, p.name,p.leader,p.seats, p.partyid, m.memberid, m.firstname, m.lastname 
         FROM party p
@@ -13,16 +10,12 @@ $stmt->execute();
 <table class="table">
     <thead>
     <tr>
-
         <th scope="col">Partij Logo</th>
         <th scope="col">Partij Naam</th>
         <th scope="col">Partij Voorzitter</th>
         <th scope="col">Voorgaande Zetels</th>
         <th scope="col">Aantal Leden</th>
-
-
     </tr>
-
     </thead>
     <button style="float:right" class="btn btn-success" onclick="window.location.href='index.php?page=addparty'">
         Voeg Partij Toe
@@ -30,7 +23,6 @@ $stmt->execute();
     <?php
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
             <tbody>
-
             <tr>
                 <td><img src="data:image/png;base64,<?=$row['logo'] ?>" width="200px" height="200px"></td>
 
@@ -69,7 +61,6 @@ $stmt->execute();
                             onclick="window.location.href='index.php?page=partydetail&partyid=<?= $row["partyid"] ?>'">Partij Detail
                     </button>
                 </td>
-
             </tr>
             </tbody>
         <?php }

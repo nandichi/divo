@@ -1,5 +1,5 @@
 <?php
-include "../private/connection.php";
+include "private/connection.php";
 
 $sql = "SELECT *
         FROM member where partyid is NULL
@@ -8,13 +8,10 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 
 ?>
-
-
 <body>
-
 <div class="container mt-3">
     <h2>Partij Toevoegen</h2>
-    <form action="php/addparty.php" method="POST" enctype="multipart/form-data">
+    <form action="../php/addparty.php" method="POST" enctype="multipart/form-data">
         <div class="mb-3 mt-3">
             <label>Partij Logo:</label>
             <input type="file" class="form-control" name="logo">
@@ -31,14 +28,10 @@ $stmt->execute();
             <label>description:</label>
             <textarea class="form-control" aria-label="With textarea" placeholder="description" name="description"></textarea>
         </div>
-
-
-
             <?php
             if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             ?>
-
 <div>
 
 
